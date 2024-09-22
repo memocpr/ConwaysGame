@@ -47,10 +47,10 @@ fun GameOfLife(rows: Int, cols: Int, modifier: Modifier = Modifier) {
             val liveNeighbors = countLiveNeighbors(oldBoard, row, col)
 
             // Game rule: Apply Conway's rules to decide the state of the current cell in the new board
-            newBoard[row][col] = if (oldBoard[row][col] == 1) {
+            newBoard[row][col] = if (oldBoard[row][col] == 1) { // *** if old board cell is alive (==1)
                 // Rule: A live cell dies if it has fewer than 2 or more than 3 live neighbors
                 if (liveNeighbors < 2 || liveNeighbors > 3) 0 else 1
-            } else {
+            } else { // *** or died (==0)
                 // Rule: A dead cell becomes alive if it has exactly 3 live neighbors
                 if (liveNeighbors == 3) 1 else 0
             }

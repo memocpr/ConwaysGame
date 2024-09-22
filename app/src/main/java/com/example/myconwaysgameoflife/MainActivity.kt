@@ -86,7 +86,7 @@ fun countLiveNeighbors(board: Array<Array<Int>>, row: Int, col: Int): Int {
             val c = col + j
             // Check if the neighbor is within bounds and alive (==1)
             if (r in board.indices && c in board[0].indices && board[r][c] == 1) { // r in board.indices checks if r is a valid row index.
-                liveCount++
+                liveCount++ // If the neighbor is alive, the liveCount is incremented by 1.
             }
         }
     }

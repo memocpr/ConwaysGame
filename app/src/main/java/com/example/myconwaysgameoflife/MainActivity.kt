@@ -76,14 +76,16 @@ fun GameOfLife(rows: Int, cols: Int, modifier: Modifier = Modifier) {
 fun countLiveNeighbors(board: Array<Array<Int>>, row: Int, col: Int): Int {
     var liveCount = 0
     // Loops through the 8 neighbors of the cell
+    // Iterate over the 3x3 grid surrounding the current cell at (row, col):
     for (i in -1..1) {
         for (j in -1..1) {
-            // Skip the current cell itself
-            if (i == 0 && j == 0) continue
+            // for example:  (-1, -1) → top-left neighbor. (0, 1) → right neighbor. (1, 0) → bottom neighbor.
+            if (i == 0 && j == 0) continue // Skip the current cell itself
+            // Calculate the Neighbor's Position: Example: If the current cell is at (3, 3) and i = -1, j = 0, the calculated neighbor position is (2, 3) (top neighbor).
             val r = row + i
             val c = col + j
-            // Check if the neighbor is within bounds and alive
-            if (r in board.indices && c in board[0].indices && board[r][c] == 1) {
+            // Check if the neighbor is within bounds and alive (==1)
+            if (r in board.indices && c in board[0].indices && board[r][c] == 1) { // r in board.indices checks if r is a valid row index.
                 liveCount++
             }
         }
